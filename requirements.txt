@@ -1,0 +1,3 @@
+feedparser
+flask_sqlalchemy
+flask
