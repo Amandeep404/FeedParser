@@ -20,18 +20,18 @@ def update_loop():
                 try:
                     update_source(source)
                 except Exception as e:
-                    print(f"Error updating source:-> {source.link}: {e}")
+                    # print(f"Error updating source:-> {source.link}: {e}")
                     continue  # If there's an error, continue to the next source
         time.sleep(105)
 
 def update_source(source):
-    print('this is the source link: ' + source.link)
+    # print('this is the source link: ' + source.link)
     parsed = feed.parse(source.feed)
     feed_articles = feed.get_articles(parsed)
     # Use the SQLAlchemy model method to insert articles
     
     article.Article.insert_from_feed(source.id, feed_articles)
-    print('This is the source id: ' + str(source.id))
+    # print('This is the source id: ' + str(source.id))
 
 # Start the background thread
 thread = Thread(target=update_loop)
