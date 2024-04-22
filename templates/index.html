@@ -2,15 +2,15 @@
 
 <head>
     <title>Latest News</title>
-    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/main.css">
 </head>
 
-<body>
+<body class="bg-slate-500 text-white">
     <main>
-        <h1>Latest News</h1>
+        <h1 class="text-center text-4xl">Latest News</h1>
         {% for article in articles %}
-        <article>
-            <h1>
+        <article class="border-1 rounded-lg border-black">
+            <h1 class="text-black">
                 <a href="/read/{{ article.id }}">{{ article.title }}</a>
             </h1>
             <div class="source">
