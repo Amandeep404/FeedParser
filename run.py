@@ -29,7 +29,6 @@ def update_source(source):
     parsed = feed.parse(source.feed)
     feed_articles = feed.get_articles(parsed)
     # Use the SQLAlchemy model method to insert articles
-    
     article.Article.insert_from_feed(source.id, feed_articles)
     # print('This is the source id: ' + str(source.id))
 
