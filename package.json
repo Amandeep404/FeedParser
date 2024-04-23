@@ -20,5 +20,8 @@
     "url": "https://github.com/Amandeep404/FeedParser/issues"
   },
   "homepage": "https://github.com/Amandeep404/FeedParser#readme",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "daisyui": "^4.10.2"
+  }
 }
