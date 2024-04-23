@@ -1,3 +1,7 @@
 feedparser
 flask_sqlalchemy
-flask
+Flask   
+requests
+Flask-Login
+pyOpenSSL
+oauthlib

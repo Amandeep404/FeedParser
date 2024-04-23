@@ -1,5 +1,27 @@
 {
   "dependencies": {
     "tailwindcss": "^3.4.3"
+  },
+  "name": "feedparser",
+  "version": "1.0.0",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tailwind": "npx tailwindcss -i ./static/src/input.css -o ./static/css/main.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Amandeep404/FeedParser.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Amandeep404/FeedParser/issues"
+  },
+  "homepage": "https://github.com/Amandeep404/FeedParser#readme",
+  "description": "",
+  "devDependencies": {
+    "daisyui": "^4.10.2"
   }
 }
