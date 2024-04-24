@@ -23,8 +23,21 @@ sidebarToggle.addEventListener("click", function () {
   }
 });
 
+const dropUp = document.getElementById("drop-up-menu");
+
 function toggleDropUp() {
-  const dropUp = document.getElementById("drop-up-menu");
   // Toggle between showing and hiding the drop-up menu
   dropUp.classList.toggle("hidden");
+
 }
+
+sidebarToggle.addEventListener("click", function () {
+  dropUp.classList.toggle("hidden");
+  if (sidebar.classList.contains("w-12")) {
+    // Expanded
+    dropUp.style.display = 'none';
+  }
+  else {
+    dropUp.style.display = '';
+  }
+});
