@@ -4,4 +4,5 @@ app_config = {
     'OAUTH2_META_URL':'https://accounts.google.com/.well-known/openid-configuration',
     'FLASK_SECRET_KEY':'hello',
     'FLASK_PORT':5000
+    
 }

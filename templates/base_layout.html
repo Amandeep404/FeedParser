@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>My Flask App</title>
+    <link rel="stylesheet" href="https://cdn.tailwindcss.com"> <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui/dist/full.css"> <!-- DaisyUI -->
+    <link rel="stylesheet" href="/static/css/main.css"> <!-- Your custom CSS -->
+</head>
+
+<body>
+    <div class="flex flex-row min-h-screen transition-all duration-300">
+        <!-- Sidebar -->
+        <div id="sidebar" class="bg-gray-200 transition-all duration-300 w-1/6 flex flex-col h-screen sticky top-0">
+            <!-- Collapse/Expand Icon -->
+            <div class="flex justify-end p-2"> <!-- Top-right corner -->
+                <button id="sidebar-toggle" class="btn btn-primary" style="width: 24px; height: 24px;">
+                    <img id="toggle-icon" src="/static/images/sidebar_open.png" alt="Toggle Sidebar"
+                        style="width: 16px; height: 16px;" />
+                </button>
+            </div>
+
+            <!-- Sidebar Content -->
+            <div id="sidebar-content" class="p-4 flex-1"> <!-- Sidebar remains in position -->
+                <ul class="menu">
+                    <li><a class="text-black" href="/"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a class="text-black" href="{{ url_for('bookmarks') }}"><i class="fas fa-info-circle"></i> Read
+                            Later</a></li>
+                    <li><a class="text-black" href="{{ url_for('recently_read') }}"><i class="fas fa-envelope"></i>
+                            Recently
+                            Read</a>
+                    </li>
+                    <li><a class="text-black" href="{{ url_for('sources_get') }}"><i class="fas fa-envelope"></i>
+                            Explore</a></li>
+                </ul>
+                <hr class="my-3 border-gray-600" />
+
+                {% for source in sources %}
+                <ul class="menu">
+                    <li><a class="text-black"><i class="fas fa-info-circle"></i>
+                            {{source.title}}
+                        </a>
+                    </li>
+                </ul>
+                {% endfor %}
+            </div>
+
+            <!-- User Profile Section -->
+            <div class="relative p-2 mt-auto rounded-lg hover:bg-gray-300">
+                <!-- 'relative' to position drop-up correctly -->
+                <!-- Clickable container to trigger drop-up -->
+                <button class="flex items-center w-full" onclick="toggleDropUp()">
+                    <!-- Use JS function to toggle drop-up -->
+                    <!-- Profile Picture -->
+                    <div class="avatar">
+                        <div class="w-8 h-8 rounded-full overflow-hidden">
+                            <img alt="Profile Picture"
+                                src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                        </div>
+                    </div>
+                    <!-- User Name -->
+                    <div class="ml-2 py-2 ">
+                        <span>Amandeep Singh</span>
+                    </div>
+                </button>
+
+                <!-- Drop-up menu -->
+                <div id="drop-up-menu" class="absolute bottom-full left-0 hidden p-2 rounded-lg shadow-md my-1 mx-3"
+                    style="background-color: #2f2f2f; width: 88%;">
+                    <!-- Hidden by default -->
+                    <ul class="flex flex-col">
+                        <li class="p-2 hover:bg-gray-200 rounded-lg hover:text-black">
+                            <a href=" /profile">Profile</a> <!-- Profile link -->
+                        </li>
+                        <li class="p-2 hover:bg-gray-200 hover:text-black rounded-lg">
+                            <a href="/settings">Settings</a> <!-- Settings link -->
+                        </li>
+                        <li class="p-2 hover:bg-gray-200 rounded-lg text-red-500">
+                            <a href="/logout">Logout</a> <!-- Logout link -->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Main Content -->
+        <div id="main-content" class="flex-1 p-6 transition-all duration-300 overflow-y-auto"> <!-- Enable scrolling -->
+            {% block content %} <!-- Content block for child templates -->
+            {% endblock %}
+        </div>
+    </div>
+
+    <script src="/static/js/sidebar.js"></script>
+
+</body>
+
+</html>

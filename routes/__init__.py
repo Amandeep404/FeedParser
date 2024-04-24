@@ -11,8 +11,19 @@ def index_get():
         Article.date_added.desc()
         )
     articles = query.all()
+    
+    query = Source.query.order_by(Source.title)
+    sources = query.all()
     #return str([article.title for article in articles])
-    return render_template('index.html', articles=articles)
+    return render_template('home.html', articles=articles, sources=sources)
+
+@app.route('/bookmarks', methods=['GET'])
+def bookmarks():
+    return render_template('bookmarks.html')
+
+@app.route('/read', methods=['GET'])
+def recently_read():
+    return render_template('recently_read.html')
 
 @app.route('/read/<int:article_id>', methods=['GET'])
 def read_article_get(article_id):
