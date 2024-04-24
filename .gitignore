@@ -166,4 +166,4 @@ feedparser-venv/
 steps.txt
 instance
 node_modules
-app_config
+app_config.py
