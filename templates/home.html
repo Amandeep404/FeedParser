@@ -1,13 +1,14 @@
 {% extends 'base_layout.html' %}
 
 {% block content %}
+<h1 class="text-blue-950  text-5xl px-7 ">Trending</h1>
 {% for article in articles %}
 <article class="my-7 px-7">
     <div class="space-y-8 lg:divide-y lg:divide-gray-100 my-7 py-2 px-7">
         <div class="pt-8 sm:flex lg:items-end group">
-            <div class="flex-shrink-0 mb-4 sm:mb-0 sm:mr-4">
+            <!-- <div class="flex-shrink-0 mb-4 sm:mb-0 sm:mr-4">
                 <img class="w-full rounded-md h-32 lg:w-32 object-cover" src="{{ article.image }}" alt="N/A">
-            </div>
+            </div> -->
             <div>
                 <span class="text-sm text-gray-500 added">{{ article.published }}</span>
                 <p class="mt-3 text-lg font-medium leading-6">

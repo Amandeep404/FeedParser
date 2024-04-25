@@ -48,3 +48,17 @@ def sources_post():
     feed_articles = feed.get_articles(parsed)
     Article.insert_from_feed(source.id, feed_articles)
     return redirect('/sources')
+
+# POP UP on user section routes 
+@app.route('/profile')
+def profile():
+    return render_template('profile.html')
+
+@app.route('/settings')
+def settings():
+    return render_template('settings.html')
+
+@app.route('/logout')
+def logout():
+    return redirect('/')
+

@@ -11,12 +11,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
         integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
         crossorigin="anonymous" />
+    <script src="https://kit.fontawesome.com/b9c166397d.js" crossorigin="anonymous"></script>
+
 </head>
 
-<body>
+<body style="background-color: #FEFAF6;">
     <div class="flex flex-row min-h-screen transition-all duration-300">
         <!-- Sidebar -->
-        <div id="sidebar" class="bg-gray-200 transition-all duration-300 w-1/6 flex flex-col h-screen sticky top-0">
+        <div id="sidebar" class="transition-all duration-300 w-1/6 flex flex-col h-screen sticky top-0"
+            style="background-color: #EADBC8;">
             <!-- Collapse/Expand Icon -->
             <div class="flex justify-end p-2"> <!-- Top-right corner -->
                 <!-- 
@@ -26,23 +29,24 @@
                     style="width: 30px; height: 50px;" class="relative top-0 left-8" /> -->
                 <!-- <button id="sidebar-toggle" class="btn btn-primary" style="width: 24px; height: 24px;"></button> -->
                 <button
-                    class="relative align-middle select-none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs bg-blue-500 text-white shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
+                    class="relative align-middle select-none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs bg-blue-950  text-white shadow-md shadow-white/10 hover:shadow-lg hover:shadow-blue-800/10 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
                     type="button" id="sidebar-toggle">
                     <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"><i
-                            class="fas fa-heart" aria-hidden="true"></i></span></button>
+                            class="fa fa-minus-square-o" aria-hidden="true"></i></span></button>
             </div>
 
             <!-- Sidebar Content -->
             <div id="sidebar-content" class="p-4 flex-1"> <!-- Sidebar remains in position -->
                 <ul class="menu">
                     <li><a class="text-black" href="/"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a class="text-black" href="{{ url_for('bookmarks') }}"><i class="fas fa-info-circle"></i> Read
+                    <li><a class="text-black" href="{{ url_for('bookmarks') }}"><i class="fa fa-bookmark-o"
+                                aria-hidden="true"></i> Read
                             Later</a></li>
-                    <li><a class="text-black" href="{{ url_for('recently_read') }}"><i class="fas fa-envelope"></i>
+                    <li><a class="text-black" href="{{ url_for('recently_read') }}"><i class="fas fa-book"></i>
                             Recently
                             Read</a>
                     </li>
-                    <li><a class="text-black" href="{{ url_for('sources_get') }}"><i class="fas fa-envelope"></i>
+                    <li><a class="text-black" href="{{ url_for('sources_get') }}"><i class="fas fa-search"></i>
                             Explore</a></li>
                 </ul>
                 <hr class="my-3 border-gray-600" />
@@ -71,24 +75,24 @@
                         </div>
                     </div>
                     <!-- User Name -->
-                    <div id="user-name" class="ml-2 py-2 ">
-                        <span>Amandeep Singh</span>
+                    <div id="user-name" class="ml-4 py-2">
+                        <span class="text-blue-950 ">Amandeep Singh</span>
                     </div>
                 </button>
 
                 <!-- Drop-up menu -->
                 <div id="drop-up-menu" class="absolute bottom-full left-0 hidden p-2 rounded-lg shadow-md my-1 mx-3"
-                    style="background-color: #2f2f2f; width: 88%;">
+                    style=" background-color:#102C57 ;width: 88%;">
                     <!-- Hidden by default -->
                     <ul class="flex flex-col">
                         <li class="p-2 hover:bg-gray-200 rounded-lg hover:text-black">
-                            <a href=" /profile">Profile</a> <!-- Profile link -->
+                            <a href="{{ url_for('profile')}}">Profile</a> <!-- Profile link -->
                         </li>
                         <li class="p-2 hover:bg-gray-200 hover:text-black rounded-lg">
-                            <a href="/settings">Settings</a> <!-- Settings link -->
+                            <a href="{{ url_for('settings')}}">Settings</a> <!-- Settings link -->
                         </li>
                         <li class="p-2 hover:bg-gray-200 rounded-lg text-red-500">
-                            <a href="/logout">Logout</a> <!-- Logout link -->
+                            <a href="{{ url_for('logout')}}">Logout</a> <!-- Logout link -->
                         </li>
                     </ul>
                 </div>

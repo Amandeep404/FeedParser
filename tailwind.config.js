@@ -2,7 +2,10 @@
 module.exports = {
   content: ["./templates/*"],
   theme: {
-    extend: {},
+    primary: "#EADBC8",
+    secondary: "#FEFAF6",
+    light: "#f8f9fa",
+    text: "#102C57",
   },
   plugins: [require("daisyui")],
   daisyui: {
