@@ -11,8 +11,19 @@ def index_get():
         Article.date_added.desc()
         )
     articles = query.all()
+    
+    query = Source.query.order_by(Source.title)
+    sources = query.all()
     #return str([article.title for article in articles])
-    return render_template('index.html', articles=articles)
+    return render_template('home.html', articles=articles, sources=sources)
+
+@app.route('/bookmarks', methods=['GET'])
+def bookmarks():
+    return render_template('bookmarks.html')
+
+@app.route('/read', methods=['GET'])
+def recently_read():
+    return render_template('recently_read.html')
 
 @app.route('/read/<int:article_id>', methods=['GET'])
 def read_article_get(article_id):
@@ -37,3 +48,17 @@ def sources_post():
     feed_articles = feed.get_articles(parsed)
     Article.insert_from_feed(source.id, feed_articles)
     return redirect('/sources')
+
+# POP UP on user section routes 
+@app.route('/profile')
+def profile():
+    return render_template('profile.html')
+
+@app.route('/settings')
+def settings():
+    return render_template('settings.html')
+
+@app.route('/logout')
+def logout():
+    return redirect('/')
+

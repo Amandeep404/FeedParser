@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <title>My Flask App</title>
+    <link rel="stylesheet" href="https://cdn.tailwindcss.com"> <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui/dist/full.css"> <!-- DaisyUI -->
+    <link rel="stylesheet" href="/static/css/main.css"> <!-- Your custom CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+        crossorigin="anonymous" />
+    <script src="https://kit.fontawesome.com/b9c166397d.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body style="background-color: #FEFAF6;">
+    <div class="flex flex-row min-h-screen transition-all duration-300">
+        <!-- Sidebar -->
+        <div id="sidebar" class="transition-all duration-300 w-1/6 flex flex-col h-screen sticky top-0"
+            style="background-color: #EADBC8;">
+            <!-- Collapse/Expand Icon -->
+            <div class="flex justify-end p-2"> <!-- Top-right corner -->
+                <!-- 
+                <img id="toggle-icon" src="" alt="Toggle Sidebar" style="width: 30px; height: 50px;"
+                    class="relative top-0 left-8" /> -->
+                <!-- <img id="toggle-icon" src="/static/images/sidebar_open.png" alt="Toggle Sidebar"
+                    style="width: 30px; height: 50px;" class="relative top-0 left-8" /> -->
+                <!-- <button id="sidebar-toggle" class="btn btn-primary" style="width: 24px; height: 24px;"></button> -->
+                <button
+                    class="relative align-middle select-none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs bg-blue-950  text-white shadow-md shadow-white/10 hover:shadow-lg hover:shadow-blue-800/10 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
+                    type="button" id="sidebar-toggle">
+                    <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"><i
+                            class="fa fa-minus-square-o" aria-hidden="true"></i></span></button>
+            </div>
+
+            <!-- Sidebar Content -->
+            <div id="sidebar-content" class="p-4 flex-1"> <!-- Sidebar remains in position -->
+                <ul class="menu">
+                    <li><a class="text-black" href="/"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a class="text-black" href="{{ url_for('bookmarks') }}"><i class="fa fa-bookmark-o"
+                                aria-hidden="true"></i> Read
+                            Later</a></li>
+                    <li><a class="text-black" href="{{ url_for('recently_read') }}"><i class="fas fa-book"></i>
+                            Recently
+                            Read</a>
+                    </li>
+                    <li><a class="text-black" href="{{ url_for('sources_get') }}"><i class="fas fa-search"></i>
+                            Explore</a></li>
+                </ul>
+                <hr class="my-3 border-gray-600" />
+
+                {% for source in sources %}
+                <ul class="menu">
+                    <li><a class="text-black"><i class="fas fa-info-circle"></i>
+                            {{source.title}}
+                        </a>
+                    </li>
+                </ul>
+                {% endfor %}
+            </div>
+
+            <!-- User Profile Section -->
+            <div class="relative p-2 mt-auto rounded-lg hover:bg-gray-300">
+                <!-- 'relative' to position drop-up correctly -->
+                <!-- Clickable container to trigger drop-up -->
+                <button class="flex items-center w-full" onclick="toggleDropUp()">
+                    <!-- Use JS function to toggle drop-up -->
+                    <!-- Profile Picture -->
+                    <div class="avatar">
+                        <div class="w-8 h-8 rounded-full overflow-hidden">
+                            <img alt="Profile Picture"
+                                src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                        </div>
+                    </div>
+                    <!-- User Name -->
+                    <div id="user-name" class="ml-4 py-2">
+                        <span class="text-blue-950 ">Amandeep Singh</span>
+                    </div>
+                </button>
+
+                <!-- Drop-up menu -->
+                <div id="drop-up-menu" class="absolute bottom-full left-0 hidden p-2 rounded-lg shadow-md my-1 mx-3"
+                    style=" background-color:#102C57 ;width: 88%;">
+                    <!-- Hidden by default -->
+                    <ul class="flex flex-col">
+                        <li class="p-2 hover:bg-gray-200 rounded-lg hover:text-black">
+                            <a href="{{ url_for('profile')}}">Profile</a> <!-- Profile link -->
+                        </li>
+                        <li class="p-2 hover:bg-gray-200 hover:text-black rounded-lg">
+                            <a href="{{ url_for('settings')}}">Settings</a> <!-- Settings link -->
+                        </li>
+                        <li class="p-2 hover:bg-gray-200 rounded-lg text-red-500">
+                            <a href="{{ url_for('logout')}}">Logout</a> <!-- Logout link -->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Main Content -->
+        <div id="main-content" class="flex-1 p-6 transition-all duration-300 overflow-y-auto"> <!-- Enable scrolling -->
+            {% block content %} <!-- Content block for child templates -->
+            {% endblock %}
+        </div>
+    </div>
+
+    <script src="/static/js/sidebar.js"></script>
+
+</body>
+
+</html>
